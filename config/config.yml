@@ -1,0 +1,23 @@
+---
+# configuration file
+  bank: "mybank"                                                                                 # Bank name
+  parser: 
+    statementDate: "^Statement(?:(?!\\n).)*\\n((?:(?!\\n).)+) (\\d{1,2}), (\\d{4})"              # Regex to find statement date (see fnGetStatementDate function for month parsing logic)
+    data: "Date Description Amount"                                                              # Regex to find data blocks
+    transaction: "^(\\d{1,2})-(\\d{1,2})"                                                        # Regex to find records within data block
+    tdMonthIndx: 0                                                                               # Month index (Examples: 0 -> mm-dd, mm/dd; 1 -> dd-mm, dd.mm )
+    tdDayIndx: 1                                                                                 # Day index (Examples: 1 -> mm-dd, mm/dd; 0 - dd-mm, dd.mm)
+    tAmount: "([$]*[,\\d]+\\.\\d\\d)"                                                            # Regex to parse transaction amount field
+    tAmountEscape: "(\\$|,)"                                                                     # Regex to remove extra characters from amount field
+    tAmountSign: "(?:Deposit|deposit|DEPOSIT)"                                                   # Regex to set sign of amount field (deposit in description -> positive, otherwise -> negative)
+  fs:
+    dd: "data/{bank}"                                                                            # Data root directory
+    pdf: "{dd}/pdf"                                                                              # Holder directory (for bank statements - pdfs)
+    txt: "{dd}/txt"                                                                              # Holder directory (for text files converted from pdfs)
+    fl: "{dd}/wrk/fl.list"                                                                       # List of files already processed (pdfs converted to text)
+    pfl: "{dd}/wrk/pf.list"                                                                      # List of files already processed (parsed text files)
+    ptl: "{dd}/wrk/pt.list"                                                                      # List of transactions already processed (parsed transactions)
+    tsv: "{dd}/transactions.tsv"                                                                 # Final tab-separated values file (final transactions list)
+    epf: "config/env.parameters"                                                                 # Environment parameters file
+    epf_java: "env_java"                                                                         # Environment parameter name for Java
+  pdfbox: "{java} -jar jar/pdfbox-app-2.0.21.jar ExtractText {pdf} {txt}"                        # pdfbox command to convert pdf to text

@@ -2,7 +2,6 @@
 Extract transactions from bank statements (PDFs)
 
 # Instructions (example bank name = mybank)
----
 ### NOTE: change parameters as needed in "config/config.yml"
 ---
 1. In "config/env.parameters", set java and ruby parameters according to your system

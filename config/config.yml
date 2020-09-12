@@ -7,9 +7,11 @@
     transaction: "^(\\d{1,2})-(\\d{1,2})"                                                        # Regex to find records within data block
     tdMonthIndx: 0                                                                               # Month index (Examples: 0 -> mm-dd, mm/dd; 1 -> dd-mm, dd.mm )
     tdDayIndx: 1                                                                                 # Day index (Examples: 1 -> mm-dd, mm/dd; 0 - dd-mm, dd.mm)
+#    tAmount: "([$]*[-,\\d]+\\.\\d\\d)"                                                           # Regex to parse transaction amount field
+#    tAmountSign: "(?:.)"                                                                         # Regex to set sign of amount field (regex in description -> positive, otherwise -> negative)
     tAmount: "([$]*[,\\d]+\\.\\d\\d)"                                                            # Regex to parse transaction amount field
+    tAmountSign: "(?:Deposit|deposit|DEPOSIT)"                                                   # Regex to set sign of amount field (regex in description -> positive, otherwise -> negative)
     tAmountEscape: "(\\$|,)"                                                                     # Regex to remove extra characters from amount field
-    tAmountSign: "(?:Deposit|deposit|DEPOSIT)"                                                   # Regex to set sign of amount field (deposit in description -> positive, otherwise -> negative)
   fs:
     dd: "data/{bank}"                                                                            # Data root directory
     pdf: "{dd}/pdf"                                                                              # Holder directory (for bank statements - pdfs)

@@ -1,7 +1,7 @@
 # pdfs2transactions
 Extract transactions from bank statements (PDFs)
 
-Download: __[here][dist/pdfs2transactions.7z]__
+Download: __[here][distribution link]__
 
 # Instructions (example bank name = mybank)
 > NOTE: change parameters as needed in "config/config.yml"
@@ -20,3 +20,4 @@ If you'd like to help, send your donations to the bitcoin address shown below.
 * BTC: [1LEDgnVzcwckzVPrCyYqV7nV4PtDdWFab7][bitcoin address]
 
 [bitcoin address]: bitcoin:1LEDgnVzcwckzVPrCyYqV7nV4PtDdWFab7
+[distribution link]: https://github.com/ares-koen/pdfs2transactions/raw/master/dist/pdfs2transactions.7z

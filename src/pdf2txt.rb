@@ -19,7 +19,13 @@ def fnLoadApp(papp)
 	papp['ddfl'] = cfg['fs']['fl']
 	papp['ddfl']['{dd}'] = papp['dd']
 
-	papp['fl'] = (File.exists?(papp['ddfl']) ? File.read(papp['ddfl']) : "")
+	if not File.exists?(papp['ddfl'])
+		fld = File.dirname(papp['ddfl'])
+		Dir.mkdir(fld) unless Dir.exist?(fld)
+		File.write(papp['ddfl'],"")
+	end
+
+	papp['fl'] = File.read(papp['ddfl'])
 
 	papp['epf'] = cfg['fs']['epf']
 	papp['epf_java'] = cfg['fs']['epf_java']
